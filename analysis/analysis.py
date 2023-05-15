@@ -21,7 +21,11 @@ class descriptive_statistics():
         self.pressure = pressure
         self.humidity = humidity
     
+    def dataset_describe(testdata):
+        describe = testdata.describe()
+    
     def descriptive_statistics(temperature, pressure, humidity):
         avg_temperature = np.average(temperature)
         avg_pressure = np.average(pressure)
         avg_humidity = np.average(humidity)
+
