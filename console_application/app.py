@@ -12,5 +12,4 @@ attr = prep.Attributes()
 id, timestamp, temperature, pressure, humidity = attr.attributes(testdata)
 
 ds = an.descriptive_statistics()
-result = ds.calculation(temperature, pressure, humidity)
-print(result)
+descriptive_statistics = ds.calculation(temperature, pressure, humidity)
