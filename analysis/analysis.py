@@ -1,8 +1,6 @@
 import numpy as np
 import pandas as pd
 
-testdata = pd.read_csv("./test_data/data.csv")
-
 class data_objects():
     def objects(testdata):
         head = testdata.head(0)
@@ -30,4 +28,5 @@ class descriptive_statistics():
         med_temperature = np.median(temperature)
         med_pressure = np.median(pressure)
         med_humidity = np.median(humidity)
+        return avg_temperature, avg_pressure, avg_humidity, med_temperature, med_pressure, med_humidity
 
