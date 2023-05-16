@@ -11,6 +11,6 @@ testdata = pd.read_csv("test_data/data.csv", delimiter=';')
 attr = prep.Attributes()
 id, timestamp, temperature, pressure, humidity = attr.attributes(testdata)
 
-ds = an.descriptive_statistics(temperature, pressure, humidity)
-result = ds.descriptive_statistics(temperature, pressure, humidity)
+ds = an.descriptive_statistics()
+result = ds.calculation(temperature, pressure, humidity)
 print(result)

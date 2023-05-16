@@ -25,7 +25,8 @@ class descriptive_statistics():
         return desc
     
     # implementing descriptive statistics with numpy
-    def descriptive_statistics(temperature, pressure, humidity):
+    @staticmethod
+    def calculation(temperature, pressure, humidity):
         avg_temperature = np.average(temperature)
         avg_pressure = np.average(pressure)
         avg_humidity = np.average(humidity)
