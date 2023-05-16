@@ -25,16 +25,20 @@ class descriptive_statistics():
         return desc
     
     # implementing descriptive statistics with numpy
-    def descriptive_statistics(self, temperature, pressure, humidity):
+    def descriptive_statistics(temperature, pressure, humidity):
         avg_temperature = np.average(temperature)
         avg_pressure = np.average(pressure)
         avg_humidity = np.average(humidity)
         med_temperature = np.median(temperature)
         med_pressure = np.median(pressure)
         med_humidity = np.median(humidity)
-        ds = {"avg_temperature": avg_temperature, "avg_pressure": avg_pressure,
-               "avg_humidity": avg_humidity, "med_temperature": med_temperature,
-                "med_pressure": med_pressure, "med_humidity": med_humidity}
+        ds = {"avg_temperature": avg_temperature, 
+              "avg_pressure": avg_pressure,
+               "avg_humidity": avg_humidity, 
+               "med_temperature": med_temperature,
+                "med_pressure": med_pressure, 
+                "med_humidity": med_humidity
+            }
         return ds
 
 """ds = descriptive_statistics()   
