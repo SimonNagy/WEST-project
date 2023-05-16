@@ -37,7 +37,7 @@ class descriptive_statistics():
                 "med_pressure": med_pressure, "med_humidity": med_humidity}
         return ds
 
-ds = descriptive_statistics()   
+"""ds = descriptive_statistics()   
 temperature_data = [25, 28, 27, 24, 26]
 pressure_data = [1013, 1015, 1012, 1014, 1011]
 humidity_data = [50, 55, 52, 49, 53]
@@ -46,4 +46,4 @@ humidity_data = [50, 55, 52, 49, 53]
 result = ds.descriptive_statistics(temperature_data, pressure_data, humidity_data)
 
 # Print the result
-print(result)
+print(result)"""

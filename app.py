@@ -14,3 +14,6 @@ testdata = pd.read_csv("./test_data/data.csv")
 print(an.descriptive_statistics.dataset_describe(testdata))
 print(an.data_objects.objects(testdata))
 
+ds = an.descriptive_statistics(testdata)
+result = ds.descriptive_statistics(testdata)
+print(result)
