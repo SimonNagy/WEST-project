@@ -4,12 +4,9 @@ import pandas as pd
 testdata = pd.read_csv("./test_data/data.csv")
 
 class data_objects():
-    def objects(testdata, id, timestamp, temperature, pressure, humidity):
-        id = testdata[0]
-        timestamp = testdata[1]
-        temperature = testdata[2]
-        pressure = testdata[3]
-        humidity = testdata[4]
+    def objects(testdata):
+        head = testdata.head(0)
+        return head
 
 class descriptive_statistics():
 
@@ -22,7 +19,8 @@ class descriptive_statistics():
     
     # describe the test dataframe using the pandas built in libary
     def dataset_describe(testdata):
-        describe = testdata.describe()
+        desc = testdata.describe()
+        return desc
     
     # implementing descriptive statistics with numpy
     def descriptive_statistics(temperature, pressure, humidity):
