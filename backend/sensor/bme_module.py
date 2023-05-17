@@ -9,7 +9,9 @@ class sensor_module:
     ADDRESS = 0x76
 
     def __init__(self):
-        return
+        self.bus = smbus2.SMBus(sensor_module.PORT)
+        self.calibration_params = bme280.load_calibration_params(self.bus, sensor_module.ADDRESS)
     
-    def read_sensor(self)
+    def read_sensor(self):
+        
         return
