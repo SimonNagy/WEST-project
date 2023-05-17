@@ -1,3 +1,6 @@
+import io
+import base64
+import matplotlib.pyplot as plt
 from flask import Flask, jsonify
 from plot import descstatplot
 
@@ -13,7 +16,8 @@ def plot():
     buffer.seek(0)
 
     # converting the buffer contents
-    plot_data = base64.b64encoder(buffer.getvalue().decode('utf-8'))
+    plot_data = base64.b64encode(buffer.getvalue()).decode('utf-8')
+    plt.close(plot_data)
 
     return jsonify({'plot_data': plot_data})
 
