@@ -14,7 +14,7 @@ class sensor_module:
     
     def read_sensor(self):
 
-        # performing a sample reading 
+        # performing a sample reading
         sample_reading = bme280.sample(self.bus, sensor_module.ADDRESS)
         temperature_val = sample_reading.temperature
         humidity_val = sample_reading.humidity
