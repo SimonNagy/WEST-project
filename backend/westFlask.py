@@ -9,6 +9,7 @@ from app import fetch_sensor_reading
 app = Flask(__name__)
 CORS(app)
 
+# plot endpoint gives back the descstat plot as jsonresponse, which can be translated on the frontend
 @app.route('/plot')
 def plot():
     # generating the plot object from plot.descstatplot
@@ -24,9 +25,10 @@ def plot():
 
     return jsonify({'plot_data': plot_data})
 
-if __name__ == '__main__':
-    app.run()
-
+# fetch endpoint triggers the app.fetch_* function, and reads all data from GCP
 @app.route('fetch')
 def fetch_data_endpoint():
     fetch_sensor_reading()
+
+if __name__ == '__main__':
+    app.run()
