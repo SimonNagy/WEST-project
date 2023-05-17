@@ -8,21 +8,21 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import app
 
-data = app.descriptive_statistics
+def descstatplot():
+    data = app.descriptive_statistics
 
-parameters = ['Temperature', 'Pressure', 'Humidity']
-avg_values = [data['avg_temperature'], data['avg_pressure'], data['avg_humidity']]
-med_values = [data['med_temperature'], data['med_pressure'], data['med_humidity']]
+    parameters = ['Temperature', 'Pressure', 'Humidity']
+    avg_values = [data['avg_temperature'], data['avg_pressure'], data['avg_humidity']]
+    med_values = [data['med_temperature'], data['med_pressure'], data['med_humidity']]
 
-x = range(len(parameters))
-plt.bar(x, avg_values, width=.4, align='center', color='blue', label='Average')
-plt.bar(x, med_values, width=.4, align='center', color='red', label='Median')
+    x = range(len(parameters))
+    plt.bar(x, avg_values, width=.4, align='center', color='blue', label='Average')
+    plt.bar(x, med_values, width=.4, align='center', color='red', label='Median')
 
-plt.xticks(x, parameters)
-plt.xlabel('Parameters')
-plt.ylabel('Values')
-plt.title('Average and Median Values')
-plt.legend()
+    plt.xticks(x, parameters)
+    plt.xlabel('Parameters')
+    plt.ylabel('Values')
+    plt.title('Average and Median Values')
+    plt.legend()
 
-# Display the plot
-plt.show()
+    return descstatplot
