@@ -8,8 +8,8 @@ The application, which displays the plots and the processed data is using a Flas
 
 ## Contributors:
 
-### Simon Nagy
-Business Intelligence Expert with experience of data science & analysis, BI & database architectures and development, as well as python fullstack development.
-
 ### Barnabás Hegedüs
 Cloud engineer, Kubernetes and GCP expert.
+
+### Simon Nagy
+Business Intelligence Expert with experience of data science & analysis, BI & database architectures and development, as well as python fullstack development.
