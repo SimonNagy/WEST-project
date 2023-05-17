@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from flask import Flask, jsonify
 from flask_cors import CORS
 from plot import descstatplot
+from app import fetch_sensor_reading
 
 app = Flask(__name__)
 CORS(app)
@@ -25,3 +26,7 @@ def plot():
 
 if __name__ == '__main__':
     app.run()
+
+@app.route('fetch')
+def fetch_data_endpoint():
+    fetch_sensor_reading()
