@@ -25,12 +25,16 @@ descriptive_statistics = ds.calculation(temperature, pressure, humidity)
 Implementing the GCP Firestore communication channel, and the data upload mechanism. Steps 
 of development:
 1. initializing the GCP connection, credentials, and the client
-2. declaration of the upload_sensor_readings function
+2. declaration of the upload_sensor_readings function, based on an instance of the sensor module
 """
 
 cred = credentials.Certificate('TODO: path to service account')
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
+# creating an instance of the sensor module 
+sensor = bme_module.sensor_module()
+
 def upload_sensor_readings():
-    # creating an instance of the sensor module
+    
+    return
