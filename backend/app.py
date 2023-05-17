@@ -24,11 +24,12 @@ ds = an.descriptive_statistics()
 descriptive_statistics = ds.calculation(temperature, pressure, humidity)
 
 """
-Implementing the GCP Firestore communication channel, and the data upload mechanism. Steps 
-of development:
+Implementing the GCP Firestore communication channel, and the data upload / download mechanism. 
+Steps of development:
 1. initializing the GCP connection, credentials, and the client
-2. declaration of the upload_sensor_readings function, based on an instance of the sensor module
+2. declaration of the fetch_sensor_readings function, from firestore
 3. scheduling the function to run every n minutes
+4. declaration of the upload_sensor_readings function, based on an instance of the sensor module
 """
 
 cred = credentials.Certificate('TODO: path to service account')
@@ -37,6 +38,19 @@ db = firestore.client()
 
 # creating an instance of the sensor module 
 sensor = bme_module.sensor_module()
+
+def fetch_sensor_reading():
+
+    #fetch all documents from sensor_data collection on firestore
+    collection_ref = db.collection('sensor_data')
+    docs = collection_ref.get()
+
+    # empty list for the sensor data
+    sensor_data = []
+
+    for doc in docs:
+        data = doc.to_dict()
+        sensor_data.append(data)
 
 def upload_sensor_readings():
 
@@ -64,3 +78,4 @@ schedule.every(1).minutes.do(upload_sensor_readings)
 while True:
     schedule.run_pending()
     time.sleep(1)
+
