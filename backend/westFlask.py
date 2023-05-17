@@ -2,9 +2,11 @@ import io
 import base64
 import matplotlib.pyplot as plt
 from flask import Flask, jsonify
+from flask_cors import CORS
 from plot import descstatplot
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/plot')
 def plot():
