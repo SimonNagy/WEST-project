@@ -25,4 +25,4 @@ def descstatplot():
     plt.title('Average and Median Values')
     plt.legend()
 
-    return descstatplot
+    return plt
