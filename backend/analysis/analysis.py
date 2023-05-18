@@ -26,7 +26,7 @@ class descriptive_statistics():
     
     # implementing descriptive statistics with numpy
     @staticmethod
-    def calculation(temperature, pressure, humidity):
+    def average_and_median(temperature, pressure, humidity):
         avg_temperature = np.average(temperature)
         avg_pressure = np.average(pressure)
         avg_humidity = np.average(humidity)
@@ -41,6 +41,19 @@ class descriptive_statistics():
                 "med_humidity": med_humidity
             }
         return ds
+    
+    @staticmethod
+    def min_and_max(temperature, pressure, humidity):
+        
+        return
+
+
+    @staticmethod
+    def std_dev(temperature, pressure, humidity):
+        std_temperature = np.std(temperature)
+        std_pressure = np.std(pressure)
+        std_humidity = np.std(humidity)
+        return (std_temperature, std_pressure, std_humidity)
 
 """ds = descriptive_statistics()   
 temperature_data = [25, 28, 27, 24, 26]
