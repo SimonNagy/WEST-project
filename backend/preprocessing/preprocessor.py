@@ -12,9 +12,6 @@ class Attributes():
         humidity = testdata["humidity"]
         return id, timestamp, temperature, pressure, humidity
 
-"""# Create an instance of the Attributes class
-attr = Attributes()
-# Call the attributes method with testdata and store the returned values
-id, timestamp, temperature, pressure, humidity = attr.attributes(testdata)
-# Print the values
-print(id, timestamp, temperature, pressure, humidity)"""
+"""
+TODO: This module has not yet been implemented to work with the sensor data. We need to make sure, the GCP data is formatted into a pandas dataframe, which can be further processed in the :analysis.py: module.
+"""

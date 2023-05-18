@@ -15,7 +15,12 @@ Integration of the modules
 -- the preprocessor is imported, then data is transmitted to the analysis module
 """
 
-testdata = pd.read_csv("test_data/data.csv", delimiter=';')
+cred = credentials.Certificate('TODO: path to service account')
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+
+# creating an instance of the sensor module 
+sensor = bme_module.sensor_module()
 
 attr = prep.Attributes()
 id, timestamp, temperature, pressure, humidity = attr.attributes(testdata)
@@ -32,12 +37,7 @@ Steps of development:
 4. declaration of the upload_sensor_readings function, based on an instance of the sensor module
 """
 
-cred = credentials.Certificate('TODO: path to service account')
-firebase_admin.initialize_app(cred)
-db = firestore.client()
 
-# creating an instance of the sensor module 
-sensor = bme_module.sensor_module()
 
 def fetch_sensor_reading():
 
