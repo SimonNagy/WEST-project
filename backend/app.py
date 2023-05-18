@@ -13,6 +13,13 @@ from sensor import bme_module
 Integration of the modules
 -- the analysis module is imported
 -- the preprocessor is imported, then data is transmitted to the analysis module
+
+Implementing the GCP Firestore communication channel, and the data upload / download mechanism. 
+Steps of development:
+1. initializing the GCP connection, credentials, and the client
+2. declaration of the fetch_sensor_readings function, from firestore
+3. scheduling the function to run every n minutes
+4. declaration of the upload_sensor_readings function, based on an instance of the sensor module
 """
 
 cred = credentials.Certificate('TODO: path to service account')
@@ -22,22 +29,11 @@ db = firestore.client()
 # creating an instance of the sensor module 
 sensor = bme_module.sensor_module()
 
-attr = prep.Attributes()
-id, timestamp, temperature, pressure, humidity = attr.attributes(testdata)
+# creating an instance of the preprocessor module
+preprocessor = prep.Attributes() # <= the prepsocessor function needs to be aligned with GCP
 
-ds = an.descriptive_statistics()
-descriptive_statistics = ds.calculation(temperature, pressure, humidity)
-
-"""
-Implementing the GCP Firestore communication channel, and the data upload / download mechanism. 
-Steps of development:
-1. initializing the GCP connection, credentials, and the client
-2. declaration of the fetch_sensor_readings function, from firestore
-3. scheduling the function to run every n minutes
-4. declaration of the upload_sensor_readings function, based on an instance of the sensor module
-"""
-
-
+# calling the :descriptive_statistics: class
+descstat = an.descriptive_statistics()
 
 def fetch_sensor_reading():
 
@@ -51,6 +47,8 @@ def fetch_sensor_reading():
     for doc in docs:
         data = doc.to_dict()
         sensor_data.append(data)
+
+    return sensor_data
 
 def upload_sensor_readings():
 
@@ -71,6 +69,17 @@ def upload_sensor_readings():
     # uploading the data to firestore
     doc_ref = db.collection('sensor_data').document() # <= sensor_data collection needs to be named in firestore
     doc_ref.set(data)
+
+"""
+After declaring all funtions and push-pull to-from GCP the functions are called
+- TODO: fetch sensor data should be replaced with the GCP module?
+"""
+
+sensor_data = fetch_sensor_reading()
+preprocessed_data = preprocessor.attributes()
+temperature, pressure, humidity = preprocessor.get_attributes(preprocessed_data)
+descstat.descriptive_statistics(temperature, pressure, humidity) # TODO: extracting these values so they can be displayed
+
 
 schedule.every(1).minutes.do(upload_sensor_readings)
 
