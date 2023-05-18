@@ -69,11 +69,19 @@ class descriptive_statistics():
 
 
     @staticmethod
-    def std_dev(temperature, pressure, humidity):
-        std_temperature = np.std(temperature)
-        std_pressure = np.std(pressure)
-        std_humidity = np.std(humidity)
-        return (std_temperature, std_pressure, std_humidity)
+    def std_dev(self):
+
+        std_temperature = np.std(self.temperature)
+        std_pressure = np.std(self.pressure)
+        std_humidity = np.std(self.humidity)
+
+        std_dev = {
+            "std_dev_temperature": std_temperature,
+            "std_dev_pressure": std_pressure,
+            "std_dev_humidity": std_humidity
+        }
+
+        return std_dev
 
 """ds = descriptive_statistics()   
 temperature_data = [25, 28, 27, 24, 26]
