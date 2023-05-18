@@ -8,20 +8,9 @@ class data_head():
 
 class descriptive_statistics():
 
-    def data(self):
-        data = pd.read_csv("./test_data/data.csv")
-        return data
-
-    def attributes(self, data):
-        id = data["id"]
-        timestamp = data["timestamp"]
-        temperature = data["temperature"]
-        pressure = data["pressure"]
-        humidity = data["humidity"]
-        return id, timestamp, temperature, pressure, humidity
-    
-    def dataset_describe(self, testdata):
-        desc = testdata.describe()
+    # data is an object, which is fetched from GCP in the app.py module
+    def dataset_describe(self, data):
+        desc = data.describe()
         return desc
     
     # implementing descriptive statistics with numpy
