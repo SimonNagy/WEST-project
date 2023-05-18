@@ -6,28 +6,33 @@ class data_head():
         head = testdata.head(0)
         return head
 
+"""
+TODO: make :data: to be a pandas dataframe, from which we can read attributes in the class constructor
+"""
+
+
 class descriptive_statistics():
+
+    # making the class constructor to contain the three attributes
+    def __init__(self, data):
+        self.temperature = data["temperature"]
+        self.pressure = data["pressure"]
+        self.humidity = data["humidity"]
 
     # :data: is an object, which is fetched from GCP in the :app.py: module
     def dataset_describe(self, data):
         desc = data.describe()
         return desc
     
-    # implementing descriptive statistics with numpy
     @staticmethod
-    def average_and_median(self, data):
+    def average_and_median(self):
         
-        # making objects to cover attributes to analyze
-        temperature = data["temperature"]
-        pressure = data["pressure"]
-        humidity = data["humidity"]
-
-        avg_temperature = np.average(temperature)
-        avg_pressure = np.average(pressure)
-        avg_humidity = np.average(humidity)
-        med_temperature = np.median(temperature)
-        med_pressure = np.median(pressure)
-        med_humidity = np.median(humidity)
+        avg_temperature = np.average(self.temperature)
+        avg_pressure = np.average(self.pressure)
+        avg_humidity = np.average(self.humidity)
+        med_temperature = np.median(self.temperature)
+        med_pressure = np.median(self.pressure)
+        med_humidity = np.median(self.humidity)
 
         # returning results named :avg_and_med:
         avg_and_med = {
@@ -42,9 +47,25 @@ class descriptive_statistics():
         return avg_and_med
     
     @staticmethod
-    def min_and_max(temperature, pressure, humidity):
-        
-        return
+    def min_and_max(self):
+
+        min_temperature = np.min(self.temperature)
+        max_temperature = np.max(self.temperature)
+        min_pressure = np.min(self.pressure)
+        max_pressure = np.max(self.pressure)
+        min_humidity = np.min(self.humidity)
+        max_humidity = np.max(self.humidity)
+
+        min_and_max = {
+            "min_temperature": min_temperature,
+            "max_temperature": max_temperature,
+            "min_pressure": min_pressure,
+            "max_pressure": max_pressure,
+            "min_humidity": min_humidity,
+            "max_humidity": max_humidity
+        }
+
+        return min_and_max
 
 
     @staticmethod
